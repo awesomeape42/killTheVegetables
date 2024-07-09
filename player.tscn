@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://d7ibvvgshsvr"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_pl0y4"]
+[ext_resource type="Script" path="res://Scripts/Player/Camera.cs" id="2_r8o7x"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cs0fp"]
+friction = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s2qmb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3m01x"]
+
+[node name="Player" type="RigidBody3D"]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_cs0fp")
+lock_rotation = true
+linear_damp = 4.0
+script = ExtResource("1_pl0y4")
+movementSpeed = 20.0
+jumpStrength = 10.0
+
+[node name="Camera" type="Camera3D" parent="."]
+script = ExtResource("2_r8o7x")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_s2qmb")
+
+[node name="GroundRaycast" type="RayCast3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3m01x")
+skeleton = NodePath("../GroundRaycast")
