@@ -16,7 +16,6 @@ physics_material_override = SubResource("PhysicsMaterial_cs0fp")
 lock_rotation = true
 linear_damp = 4.0
 script = ExtResource("1_pl0y4")
-movementSpeed = 20.0
 jumpStrength = 10.0
 
 [node name="Camera" type="Camera3D" parent="."]
